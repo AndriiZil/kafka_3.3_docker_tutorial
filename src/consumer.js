@@ -11,7 +11,7 @@ consume();
 
 async function consume() {
     try {
-        const consumer = kafka.consumer({ groupId: 'my-group2' });
+        const consumer = kafka.consumer({ groupId: 'my-group' });
         await consumer.connect();
         await consumer.subscribe({ topics: ['users'] });
 
