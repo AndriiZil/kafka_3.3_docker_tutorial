@@ -4,8 +4,9 @@ volumes:
   volume1:
 
 services:
-  kafka1:
+  kafka:
     image: 'bitnami/kafka:latest'
+    container_name: kafka-server
     ports:
       - "9092:9092"
     environment:
@@ -16,7 +17,7 @@ services:
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
       - KAFKA_BROKER_ID=1
-      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka1:9093
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka:9093
       - ALLOW_PLAINTEXT_LISTENER=yes
     volumes:
       - volume1:/bitnami/kafka
